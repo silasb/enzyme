@@ -2827,4 +2827,17 @@ describeWithDOM('mount', () => {
       });
     });
   });
+
+  describe('dangerouslySetInnerHTML', () => {
+    const wrapper = mount(<p dangerouslySetInnerHTML={{ __html: 'blah' }} />);
+
+    it('should return text of node', () => {
+      expect(wrapper.html()).to.match(/blah/);
+    });
+
+    it('should return text of node', () => {
+      expect(wrapper.text()).to.equal('blah');
+    });
+  });
+
 });

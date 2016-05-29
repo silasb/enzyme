@@ -2790,4 +2790,16 @@ describe('shallow', () => {
     });
   });
 
+  describe('dangerouslySetInnerHTML', () => {
+    const wrapper = shallow(<p dangerouslySetInnerHTML={{ __html: 'blah' }} />);
+
+    it('should return text of node', () => {
+      expect(wrapper.html()).to.match(/blah/);
+    });
+
+    it('should return text of node', () => {
+      expect(wrapper.text()).to.equal('blah');
+    });
+  });
+
 });
